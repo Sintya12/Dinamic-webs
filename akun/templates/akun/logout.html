@@ -1,0 +1,11 @@
+{% extends "akun/base.html" %}
+{% block KONTEN %}
+<div class="container">
+  <h3>Kamu telah berhasil keluar</h3>
+  <div class="border-top mt-1 pt-2">
+    <small class="text-muted">
+      <a class="ml-2" href="{% url 'login' %}">Masuk lagi?</a>
+    </small>
+  </div>
+</div>
+{% endblock KONTEN %}

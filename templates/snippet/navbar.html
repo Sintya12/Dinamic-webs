@@ -1,0 +1,28 @@
+{% load static %}
+<!-- <link rel="stylesheet" href="{% static 'css/navbar.css' %}"> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-steel">
+  <div class="container">
+    <a class="navbar-brand text-light" href="#">Sintya's Blog</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse site-header" id="navbarSupportedContent">
+      <div class="navbar-nav ml-4">
+        <a class="nav-item nav-link" href="{% url 'blog:home' %}">Home</a>
+        <a class="nav-item nav-link" href="{% url 'blog:about' %}">About</a>
+      </div>
+      <!-- Jika user berstatus logout atau diotentikasi maka menu pada navbar yg ditampilkan -->
+      <div class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+          <a class="nav-item nav-link" href="{% url 'blog:buat' %}">Buat Blog</a>
+          <a class="nav-item nav-link" href="{% url 'profil' request.user %}">Profil</a>
+          <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+        {% else %}
+          <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+          <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>

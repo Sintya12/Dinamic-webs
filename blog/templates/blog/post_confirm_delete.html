@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block KONTEN %}
+  <div class="container content-section">
+    <form method="post">
+      <!-- Mengakses varible form default Django -->
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">
+          Hapus Postingan Blog
+        </legend>
+        <h3>Apakah kamu yakin ingin menghapus "{{object.judul}}" ?</h3>
+      </fieldset>
+      <div class="form-group">
+        <button class="btn btn-outline-danger" type="submit">Ya</button>
+        <a class="btn btn-outline-info" href="{% url 'blog:detail' object.id %}">Tidak</a>
+      </div>
+    </form>
+  </div>
+{% endblock KONTEN %}

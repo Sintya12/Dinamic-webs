@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block KONTEN %}
+  <div class="container content-section">
+    <form method="post">
+      <!-- Mengakses varible form default Django -->
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">
+          <h1>Postingan Blog</h1>
+        </legend>
+        {{form|crispy}}
+      </fieldset>
+      <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">posting</button>
+      </div>
+    </form>
+  </div>
+{% endblock KONTEN %}

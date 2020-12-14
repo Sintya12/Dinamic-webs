@@ -1,0 +1,24 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block KONTEN %}
+  <article class="media content-section">
+    <a href="{{object.penulis.profil.gambar.url}}">
+      <img class="rounded-circle account-img" src="{{object.penulis.profil.gambar.url}}" alt="" style="max-width: 60px;max-height: 60px">
+    </a>
+    <div class="media-body">
+      <div class="artikel-metadata">
+        <a class="mr-2" href="{% url 'blog:pengguna' object.penulis.pengguna %}">{{object.penulis}}</a>
+        <small class="text-muted">{{object.publikasi|date:"d F, Y"}}</small>
+      </div>
+      <h2 class="artikel-judul mt-3 mb-2">{{object.judul}}</h2>
+      <p class="artikel-konten">{{object.konten}}</p>
+
+      {% if object.penulis == user %}
+        <div class="mt-5 mb-3">
+          <a class="btn btn-warning mr-2" href="{% url 'blog:edit' object.id %}">Edit</a>
+          <a class="btn btn-danger" href="{% url 'blog:hapus' object.id %}">Hapus</a>
+        </div>
+      {% endif %}
+    </div>
+  </article>
+{% endblock KONTEN %}

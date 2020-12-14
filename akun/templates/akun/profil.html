@@ -1,0 +1,54 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block KONTEN %}
+<div class="container">
+  <div class="content-section">
+    <div class="media mb-5">
+      <div class="media-head mr-5 ml-3">
+        <a href="{{user.profil.gambar.url}}">
+          <img class="rounded-circle account-img" src="{{user.profil.gambar.url}}" alt="" width='100px'>
+        </a>
+        <p class="text-muted mt-4">
+          <i class="fa fa-map-marked-alt mr-2" aria-hidden="true" style="color: red;"></i>
+          {{user.profil.alamat}}
+        </p>
+        <a href="{{user.profil.website}}" class="mt-2">
+          <i class="fas fa-globe mr-2" aria-hidden="true" style="color: #0080FF;"></i>
+          {{user.profil.website}}
+        </a>
+        <p class="text-muted mt-2">
+          <i class="fas fa-phone-alt mr-2" style="color: green;"></i>
+          {{user.profil.hp}}
+        </p>
+        <a class="mt-2" href="mailto:{{user.email}}">
+          <i class="fas fa-envelope mr-2" style="color: orange;"></i>
+          {{user.email}}
+        </a>
+      </div>
+      <div class="media-body">
+        <h2 class="account-heading mt-3 mb-5">{{user.username}}</h2>
+        <h4 class="text-muted">Nama Lengkap</h4>
+        <p>{{user.profil.nama_lengkap}}</p>
+        <h4 class="text-muted mt-4">Tentang</h4>
+        <p class="text-muted ml-1">{{user.profil.tentang}}</p>
+      </div>
+    </div>
+    <div class="form">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4">
+            <h1>Informasi Profil</h1>
+          </legend>
+          {{uform|crispy}}
+          {{pform|crispy}}
+        </fieldset>
+        <div class="form-group">
+          <button class="btn btn-outline-info" href="{% url 'profil' request.user %}" type="submit">Perbarui</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock KONTEN %}

@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    {% include "snippet/styles.html" %}
+    <link rel="stylesheet" href="{% static 'akun/main.css' %}">
+  </head>
+  <body>
+    <header>
+      {% include "snippet/navbar.html" %}
+    </header>
+
+    <main role="main">
+      <div class="container">
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{message.tags}}">
+              {{message}}
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      {% block KONTEN %}{% endblock KONTEN %}
+    </main>
+    {% include "snippet/scripts.html" %}
+  </body>
+</html>
